@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:fillViewport="true"
+    tools:context="com.example.tennisscoreboard.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+        <RadioGroup
+            android:id="@+id/match_type_rbtn_grp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@drawable/match_type_radgrp_bg"
+            android:orientation="horizontal"
+            android:padding="@dimen/match_type_rbtn_grp_content_padding">
+
+            <RadioButton
+                android:id="@+id/mens_rbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/mens_rbtn_margin_left"
+                android:layout_marginLeft="@dimen/mens_rbtn_margin_left"
+                android:layout_marginEnd="@dimen/mens_rbtn_margin_right"
+                android:layout_marginRight="@dimen/mens_rbtn_margin_right"
+                android:onClick="onMatchTypeRadioButtonClicked"
+                android:text="@string/label_mens_rbtn"
+                android:textAppearance="?android:textAppearanceSmall"
+                tools:ignore="OnClick" />
+
+            <RadioButton
+                android:id="@+id/womens_rbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/womens_rbtn_margin_right"
+                android:layout_marginRight="@dimen/womens_rbtn_margin_right"
+                android:onClick="onMatchTypeRadioButtonClicked"
+                android:text="@string/label_womens_rbtn"
+                android:textAppearance="?android:textAppearanceSmall"
+                tools:ignore="OnClick" />
+
+        </RadioGroup>
+
+        <HorizontalScrollView
+            android:id="@+id/scoreboard_table_scroll_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/match_type_rbtn_grp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:fillViewport="true">
+
+            <TableLayout
+                android:id="@+id/scoreboard_table"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TableRow android:background="@color/p1RowColorBackground">
+
+                    <TextView
+                        android:id="@+id/player1_row_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p1CellColorBackground"
+                        android:paddingStart="@dimen/scoreboard_table_player_label_column_padding_left"
+                        android:paddingLeft="@dimen/scoreboard_table_player_label_column_padding_left"
+                        android:paddingTop="@dimen/scoreboard_table_player_label_column_padding_top"
+                        android:paddingEnd="@dimen/scoreboard_table_player_label_column_padding_right"
+                        android:paddingRight="@dimen/scoreboard_table_player_label_column_padding_right"
+                        android:paddingBottom="@dimen/scoreboard_table_player_label_column_padding_bottom"
+                        android:text="@string/label_player_1"
+                        android:textAllCaps="true"
+                        android:textColor="@color/p1GamePlayHdrTextColor"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                    <TextView
+                        android:id="@+id/p1_total_set_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/p1_set1_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p1CellColorBackground"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                    <TextView
+                        android:id="@+id/p1_set2_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p1CellColorBackground"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                    <TextView
+                        android:id="@+id/p1_set3_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="4"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p1CellColorBackground"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                    <TextView
+                        android:id="@+id/p1_set4_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="5"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p1CellColorBackground"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                    <TextView
+                        android:id="@+id/p1_set5_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="6"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p1CellColorBackground"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                </TableRow>
+
+                <TableRow android:background="@color/p2RowColorBackground">
+
+                    <TextView
+                        android:id="@+id/player2_row_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p2CellColorBackground"
+                        android:paddingStart="@dimen/scoreboard_table_player_label_column_padding_left"
+                        android:paddingLeft="@dimen/scoreboard_table_player_label_column_padding_left"
+                        android:paddingTop="@dimen/scoreboard_table_player_label_column_padding_top"
+                        android:paddingEnd="@dimen/scoreboard_table_player_label_column_padding_right"
+                        android:paddingRight="@dimen/scoreboard_table_player_label_column_padding_right"
+                        android:paddingBottom="@dimen/scoreboard_table_player_label_column_padding_bottom"
+                        android:text="@string/label_player_2"
+                        android:textAllCaps="true"
+                        android:textColor="@color/p2GamePlayHdrTextColor"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                    <TextView
+                        android:id="@+id/p2_total_set_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/p2_set1_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p2CellColorBackground"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                    <TextView
+                        android:id="@+id/p2_set2_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="3"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p2CellColorBackground"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                    <TextView
+                        android:id="@+id/p2_set3_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="4"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p2CellColorBackground"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                    <TextView
+                        android:id="@+id/p2_set4_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="5"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p2CellColorBackground"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                    <TextView
+                        android:id="@+id/p2_set5_pts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="6"
+                        android:layout_margin="@dimen/scoreboard_table_cell_margin"
+                        android:background="@color/p2CellColorBackground"
+                        android:padding="@dimen/scoreboard_table_points_cell_padding"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/scoreboard_table_text_size" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:id="@+id/game_score_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/scoreboard_table_scroll_view"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/p1_game_score_layout"
+                android:layout_width="@dimen/linear_layout_weighted_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/p1GamePlayBackground"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/game_score_layout_content_horizontal_padding"
+                android:paddingRight="@dimen/game_score_layout_content_horizontal_padding">
+
+                <TextView
+                    android:id="@+id/p1_gameplay_hdr_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/gameplay_hdr_text_padding"
+                    android:text="@string/label_player_1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/p1GamePlayHdrTextColor"
+                    android:textSize="@dimen/gameplay_player_hdr_text_size"
+                    android:textStyle="bold"
+                    app:fontFamily="serif" />
+
+                <View
+                    android:id="@+id/p1_gameplay_hdr_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gameplay_hdr_line_height"
+                    android:layout_marginBottom="@dimen/gameplay_hdr_line_margin_bottom"
+                    android:background="@color/p1RowColorBackground" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/p1_game_pts_text"
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/game_points_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/game_points_label_margin_top"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/game_score_points_label_padding_left"
+                        android:gravity="start|top"
+                        android:paddingLeft="@dimen/game_score_points_label_padding_left"
+                        android:text="@string/label_game_points"
+                        android:textSize="@dimen/game_points_label_text_size"
+                        android:textAllCaps="true"
+                        app:fontFamily="sans-serif-condensed" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/p1_gameplay_pts_text"
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/gameplay_points_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/gameplay_point_label_margin_top"
+                        android:layout_weight="1"
+                        android:gravity="start|top"
+                        android:paddingStart="@dimen/game_score_points_label_padding_left"
+                        android:paddingLeft="@dimen/game_score_points_label_padding_left"
+                        android:text="@string/label_gameplay_point"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/gameplay_point_label_text_size"
+                        app:fontFamily="sans-serif-condensed" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/p1_tie_breaker_game_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/p1_tb_pts_text"
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/tie_break_points_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/tie_break_points_label_margin_top"
+                        android:layout_weight="1"
+                        android:gravity="start|top"
+                        android:paddingStart="@dimen/game_score_points_label_padding_left"
+                        android:paddingLeft="@dimen/game_score_points_label_padding_left"
+                        android:text="@string/label_tie_break_points"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/tie_break_points_label_text_size" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/game_score_columns_divider_width"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/game_score_columns_divider_margin_top"
+                android:background="@color/p1RowColorBackground" />
+
+            <View
+                android:layout_width="@dimen/game_score_columns_divider_width"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/game_score_columns_divider_margin_top"
+                android:background="@color/p2RowColorBackground" />
+
+            <LinearLayout
+                android:id="@+id/p2_game_score_layout"
+                android:layout_width="@dimen/linear_layout_weighted_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/p2GamePlayBackground"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/game_score_layout_content_horizontal_padding"
+                android:paddingRight="@dimen/game_score_layout_content_horizontal_padding">
+
+                <TextView
+                    android:id="@+id/p2_gameplay_hdr_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/gameplay_hdr_text_padding"
+                    android:text="@string/label_player_2"
+                    android:textAllCaps="true"
+                    android:textColor="@color/p2GamePlayHdrTextColor"
+                    android:textSize="@dimen/gameplay_player_hdr_text_size"
+                    android:textStyle="bold"
+                    app:fontFamily="serif" />
+
+                <View
+                    android:id="@+id/p2_gameplay_hdr_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gameplay_hdr_line_height"
+                    android:layout_marginBottom="@dimen/gameplay_hdr_line_margin_bottom"
+                    android:background="@color/p2RowColorBackground" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/p2_game_pts_text"
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/game_points_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/game_points_label_margin_top"
+                        android:layout_weight="1"
+                        android:gravity="start|top"
+                        android:paddingStart="@dimen/game_score_points_label_padding_left"
+                        android:paddingLeft="@dimen/game_score_points_label_padding_left"
+                        android:text="@string/label_game_points"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/game_points_label_text_size"
+                        app:fontFamily="sans-serif-condensed" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/p2_gameplay_pts_text"
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/gameplay_points_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/gameplay_point_label_margin_top"
+                        android:layout_weight="1"
+                        android:gravity="start|top"
+                        android:paddingStart="@dimen/game_score_points_label_padding_left"
+                        android:paddingLeft="@dimen/game_score_points_label_padding_left"
+                        android:text="@string/label_gameplay_point"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/gameplay_point_label_text_size"
+                        app:fontFamily="sans-serif-condensed" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/p2_tie_breaker_game_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/p2_tb_pts_text"
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:text="@string/game_set_point_0"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/tie_break_points_text_size" />
+
+                    <TextView
+                        android:layout_width="@dimen/linear_layout_weighted_0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/tie_break_points_label_margin_top"
+                        android:layout_weight="1"
+                        android:gravity="start|top"
+                        android:paddingStart="@dimen/game_score_points_label_padding_left"
+                        android:paddingLeft="@dimen/game_score_points_label_padding_left"
+                        android:text="@string/label_tie_break_points"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/tie_break_points_label_text_size" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/plus_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/game_score_layout"
+            android:layout_centerHorizontal="true"
+            style="?android:attr/buttonBarStyle"
+            android:layout_marginBottom="@dimen/plus_btn_layout_margin_bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/p1_plus_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="@dimen/linear_layout_weighted_0dp"
+                android:layout_height="@dimen/plus_btn_height"
+                android:layout_marginLeft="@dimen/plus_btn_horizontal_margin"
+                android:layout_weight="1"
+                android:background="@color/p1PlusButtonColor"
+                android:onClick="onPlusButtonClicked"
+                android:layout_marginRight="@dimen/plus_btn_horizontal_margin"
+                android:text="@string/label_plus_btn"
+                android:textSize="@dimen/plus_btn_text_size"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:id="@+id/p2_plus_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="@dimen/linear_layout_weighted_0dp"
+                android:layout_height="@dimen/plus_btn_height"
+                android:layout_marginLeft="@dimen/plus_btn_horizontal_margin"
+                android:layout_weight="1"
+                android:background="@color/p2PlusButtonColor"
+                android:onClick="onPlusButtonClicked"
+                android:layout_marginRight="@dimen/plus_btn_horizontal_margin"
+                android:text="@string/label_plus_btn"
+                android:textSize="@dimen/plus_btn_text_size"
+                tools:ignore="OnClick" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/game_play_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/plus_btn_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/game_play_text_margin_bottom"
+            android:gravity="center"
+            android:textSize="@dimen/game_play_text_size"
+            app:fontFamily="sans-serif"
+            tools:text="This is for display" />
+
+        <Button
+            android:id="@+id/start_reset_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/game_play_text"
+            android:layout_centerHorizontal="true"
+            android:background="@color/resetButtonColor"
+            android:onClick="onStartResetButtonClicked"
+            android:padding="@dimen/start_reset_btn_padding"
+            android:text="@string/label_begin_match_btn"
+            android:textAllCaps="true"
+            android:textSize="@dimen/start_reset_btn_text_size"
+            tools:ignore="OnClick" />
+
+    </RelativeLayout>
+
+</ScrollView>
